@@ -14,6 +14,11 @@ export class UserService {
   ) {}
   private readonly logger = new MyLogger(UserService.name);
 
+  async getList() {
+    const list = await this.userModel.find();
+    return list;
+  }
+
   /**
    * @description
    * @author xujx

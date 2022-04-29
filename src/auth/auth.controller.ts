@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  HttpException,
   Post,
   Request,
   UseGuards,
@@ -25,6 +26,18 @@ export class AuthController {
   @Post('login')
   async login(@Body() req: signinDto) {
     const res = await this.authService.login(req);
+    return res;
+  }
+
+  @Post('signup')
+  async signup(@Body() req) {
+    const res = await this.authService.signup({
+      avatarUrl: '',
+      ...req,
+    });
+    if (!res) {
+      throw new HttpException('already has user', 400);
+    }
     return res;
   }
 }

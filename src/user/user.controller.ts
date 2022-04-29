@@ -20,6 +20,11 @@ export class UserController {
 
   private readonly logger = new MyLogger(UserController.name);
 
+  @Get()
+  async userList(): Promise<User[]> {
+    return this.userService.getList();
+  }
+
   @Get(':id')
   async userInfo(@Param('id') id: string): Promise<User> {
     return this.userService.findUserById(id);
