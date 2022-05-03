@@ -1,0 +1,20 @@
+POST http://localhost:3000/home-api/cats HTTP/1.1
+content-type: application/json
+
+{
+  "name":"yumi",
+  "age":8,
+  "breed":"O" 
+}
+
+###
+
+GET http://localhost:3000/home-api/cats HTTP/1.1
+
+###
+
+GET  http://localhost:3000/home-api/cats/6268f518a2145857e74770e9 HTTP/1.1
+
+###
+
+DELETE http://localhost:3000/home-api/cats/6268f542a2145857e74770ed HTTP/1.1

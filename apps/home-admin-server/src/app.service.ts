@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getData(): { message: string } {
-    return { message: 'Welcome to home-admin-server!' };
+  getHello(): string {
+    return 'This is the server side of My Home Admin.';
   }
 }
