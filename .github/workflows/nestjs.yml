@@ -5,7 +5,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ] # temp unuse github actions
   pull_request:
     branches: [ master ]
 
@@ -27,7 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm run build --if-present
+    - run: npm run build:server --if-present
     - name: Deploy to Vercel
       run: npx vercel --token ${VERCEL_TOKEN} --prod
       env:

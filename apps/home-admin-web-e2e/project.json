@@ -1,0 +1,28 @@
+{
+  "root": "apps/home-admin-web-e2e",
+  "sourceRoot": "apps/home-admin-web-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/home-admin-web-e2e/cypress.json",
+        "devServerTarget": "home-admin-web:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "home-admin-web:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/home-admin-web-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["home-admin-web"]
+}

@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/home-admin-web",
+  "sourceRoot": "apps/home-admin-web/src",
+  "prefix": "home-admin",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/home-admin-web",
+        "index": "apps/home-admin-web/src/index.html",
+        "main": "apps/home-admin-web/src/main.ts",
+        "polyfills": "apps/home-admin-web/src/polyfills.ts",
+        "tsConfig": "apps/home-admin-web/tsconfig.app.json",
+        "inlineStyleLanguage": "less",
+        "assets": [
+          "apps/home-admin-web/src/favicon.ico",
+          "apps/home-admin-web/src/assets"
+        ],
+        "styles": ["apps/home-admin-web/src/styles.less"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/home-admin-web/src/environments/environment.ts",
+              "with": "apps/home-admin-web/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "home-admin-web:build:production"
+        },
+        "development": {
+          "browserTarget": "home-admin-web:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "home-admin-web:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/home-admin-web/**/*.ts",
+          "apps/home-admin-web/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/home-admin-web"],
+      "options": {
+        "jestConfig": "apps/home-admin-web/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
