@@ -5,7 +5,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ] # temp unuse github actions
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
