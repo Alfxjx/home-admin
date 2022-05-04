@@ -3,14 +3,14 @@
   "name": "home-admin-server",
   "builds": [
     {
-      "src": "dist/main.js",
+      "src": "dist/apps/home-admin-server/main.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "dist/main.js"
+      "dest": "dist/apps/home-admin-server/main.js"
     }
   ]
 }
