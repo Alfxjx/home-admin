@@ -66,7 +66,7 @@ export class UserService {
       return;
     }
     const res = await this.userModel.create(user);
-    this.logger.log(JSON.stringify(res));
+    this.logger.log(res);
     return res;
   }
 
