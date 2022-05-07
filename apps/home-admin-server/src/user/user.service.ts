@@ -79,13 +79,15 @@ export class UserService {
    * @returns {*}
    * @memberof UserService
    */
-  async updateUser(_id, user: updateUserDto) {
+  async updateUser(user: updateUserDto) {
     const resp = await this.hasUser(user.username);
     if (!resp) {
       this.logger.warn(`no user called ${user.username}`);
       return;
     }
-    const user$ = await this.userModel.findByIdAndUpdate(_id, user);
+    const { _id, ...rest } = user;
+    await this.userModel.findByIdAndUpdate(_id, rest);
+    const user$ = await this.userModel.findById(_id);
     return user$;
   }
 

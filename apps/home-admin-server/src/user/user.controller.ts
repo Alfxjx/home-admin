@@ -4,7 +4,9 @@ import {
   Get,
   HttpException,
   Param,
+  Patch,
   Post,
+  Request,
   UseGuards,
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
@@ -28,6 +30,27 @@ export class UserController {
   @Get(':id')
   async userInfo(@Param('id') id: string): Promise<User> {
     return this.userService.findUserById(id);
+  }
+
+  @Patch('update')
+  async updateUserInfo(
+    @Request() req,
+    @Body() requestData: Partial<createUserDto>
+  ) {
+    this.logger.log(JSON.stringify(req.user));
+    this.logger.log(JSON.stringify(requestData));
+    const user = await this.userService.findUserByName(req.user.username);
+    if (!user) {
+      throw new HttpException('error happens', 400);
+    }
+    const res = await this.userService.updateUser({
+      _id: user._id,
+      ...requestData,
+    });
+    if (!res) {
+      throw new HttpException('error happens', 400);
+    }
+    return res;
   }
 
   @Post('create')
