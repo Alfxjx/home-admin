@@ -37,9 +37,8 @@ export class UserController {
     @Request() req,
     @Body() requestData: Partial<createUserDto>
   ) {
-    this.logger.log(JSON.stringify(req.user));
-    this.logger.log(JSON.stringify(requestData));
-    const user = await this.userService.findUserByName(req.user.username);
+    this.logger.log(requestData);
+    const user = await this.userService.findUserById(req.user._id);
     if (!user) {
       throw new HttpException('error happens', 400);
     }
@@ -55,7 +54,7 @@ export class UserController {
 
   @Post('create')
   async create(@Body() requestData: createUserDto) {
-    this.logger.log(JSON.stringify(requestData));
+    this.logger.log(requestData);
     const res = await this.userService.createUser(requestData);
     if (!res) {
       throw new HttpException('error happens', 400);

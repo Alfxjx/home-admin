@@ -5,6 +5,9 @@ export type UserDocument = User & Document;
 
 @Schema()
 export class User extends Document {
+  @Prop({ required: true, default: Date.now })
+  createedAt: Date;
+
   @Prop({ required: true })
   username: string;
 
