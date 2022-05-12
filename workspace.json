@@ -3,6 +3,8 @@
   "projects": {
     "home-admin-server": "apps/home-admin-server",
     "home-admin-web": "apps/home-admin-web",
-    "home-admin-web-e2e": "apps/home-admin-web-e2e"
+    "home-admin-web-e2e": "apps/home-admin-web-e2e",
+    "home-mobile-web": "apps/home-mobile-web",
+    "home-mobile-web-e2e": "apps/home-mobile-web-e2e"
   }
 }
