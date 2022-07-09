@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { MailerService } from '@nestjs-modules/mailer'
+
 import { MyLogger } from '../shared/logger/logger.service.';
 import { PaymentDTO } from './dto/payment.dto';
 import { Payment, PaymentDocument } from './schemas/payment.schema';
@@ -14,7 +16,8 @@ export class PaymentService {
     @InjectModel(Payment.name)
     private readonly paymentModel: Model<PaymentDocument>,
     private readonly cafe$: CafeService,
-    private readonly bean$: BeanService
+    private readonly bean$: BeanService,
+    private readonly mail$: MailerService,
   ) { }
 
   private logger = new MyLogger(PaymentService.name);
@@ -47,7 +50,19 @@ export class PaymentService {
       income: sum,
       ...DTO
     });
+    await this.sendMail(create, cafe);
     return create;
+  }
+
+  async sendMail(create, cafe) {
+    const text = `有人下单了一杯咖啡： 「${cafe.isHot ? '热' : '冰'}」 ${create.cafeName}, 种类：${cafe.category}${create.beanName ? ', 豆子：' + create.beanName : "。"}`;
+    this.logger.log(text);
+    this.mail$.sendMail({
+      to: process.env.MAIL_RECEIVER,
+      from: process.env.MAIL_NAME,
+      subject: '您有新的咖啡订单',
+      text: text,
+    }).then(() => { }).catch(() => { });
   }
 
   async updateOne(id: string, DTO: PaymentDTO): Promise<Payment> {
