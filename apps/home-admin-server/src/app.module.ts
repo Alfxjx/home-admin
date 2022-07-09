@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { CatsModule } from './cats/cats.module';
 import { CafeModule } from './cafe/cafe.module';
 import { BeanModule } from './bean/bean.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -23,8 +24,9 @@ import { BeanModule } from './bean/bean.module';
     CatsModule,
     CafeModule,
     BeanModule,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

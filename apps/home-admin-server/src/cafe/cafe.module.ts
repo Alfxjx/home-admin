@@ -10,5 +10,6 @@ import { Cafe, CafeSchema } from './schemas/cafe.schema';
   ])],
   controllers: [CafeController],
   providers: [CafeService],
+  exports: [CafeService]
 })
 export class CafeModule { }

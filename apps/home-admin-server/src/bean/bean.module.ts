@@ -10,5 +10,6 @@ import { Bean, BeanSchema } from './schemas/bean.schema';
   ])],
   controllers: [BeanController],
   providers: [BeanService],
+  exports: [BeanService]
 })
 export class BeanModule { }
