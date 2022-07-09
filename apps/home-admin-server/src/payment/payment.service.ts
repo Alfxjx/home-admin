@@ -55,7 +55,7 @@ export class PaymentService {
   }
 
   async sendMail(create, cafe) {
-    const text = `有人下单了一杯咖啡： 「${cafe.isHot ? '热' : '冰'}」 ${create.cafeName}, 种类：${cafe.category}${create.beanName ? ', 豆子：' + create.beanName : "。"}`;
+    const text = `${create.customerName} 下单了一杯咖啡： 「${cafe.isHot ? '热' : '冰'}」 ${create.cafeName}, 种类：${cafe.category}${create.beanName ? ', 豆子：' + create.beanName : "。"}`;
     this.logger.log(text);
     await this.mail$.sendMail({
       to: process.env.MAIL_RECEIVER,

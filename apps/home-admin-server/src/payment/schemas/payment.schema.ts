@@ -10,6 +10,9 @@ export class Payment extends Document {
   createdAt: Date;
 
   @Prop()
+  customerName: string;
+
+  @Prop()
   cafeID: string;
 
 
