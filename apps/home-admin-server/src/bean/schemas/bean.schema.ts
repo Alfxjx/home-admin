@@ -9,10 +9,7 @@ export class Bean extends Document {
   name: string;
 
   @Prop()
-  category: string;
-
-  @Prop()
-  isHot: boolean;
+  description: string;
 
   @Prop()
   price: number;
