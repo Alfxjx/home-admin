@@ -8,6 +8,9 @@ import { UserModule } from './user/user.module';
 import { ProductsModule } from './products/products.module';
 import { AuthModule } from './auth/auth.module';
 import { CatsModule } from './cats/cats.module';
+import { CafeModule } from './cafe/cafe.module';
+import { BeanModule } from './bean/bean.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -19,6 +22,9 @@ import { CatsModule } from './cats/cats.module';
     UserModule,
     ProductsModule,
     CatsModule,
+    CafeModule,
+    BeanModule,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

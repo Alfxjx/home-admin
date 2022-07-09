@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/home-admin-web",
         "index": "apps/home-admin-web/src/index.html",
@@ -18,7 +20,10 @@
           "apps/home-admin-web/src/favicon.ico",
           "apps/home-admin-web/src/assets"
         ],
-        "styles": ["apps/home-admin-web/src/styles.less"],
+        "styles": [
+          "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+          "apps/home-admin-web/src/styles.less"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -83,7 +88,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/home-admin-web"],
+      "outputs": [
+        "coverage/apps/home-admin-web"
+      ],
       "options": {
         "jestConfig": "apps/home-admin-web/jest.config.ts",
         "passWithNoTests": true
