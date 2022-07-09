@@ -14,7 +14,7 @@ import { Payment, PaymentSchema } from './schemas/payment.schema';
     ]),
     MailerModule.forRoot({
       transport: {
-        host: 'smtp.exmail.qq.com',
+        host: 'hwsmtp.exmail.qq.com',
         port: 465,
         auth: {
           user: process.env.MAIL_NAME,

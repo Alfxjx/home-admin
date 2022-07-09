@@ -62,7 +62,11 @@ export class PaymentService {
       from: process.env.MAIL_NAME,
       subject: '您有新的咖啡订单',
       text: text,
-    }).then(() => { }).catch(() => { });
+    }).then(() => {
+      this.logger.log('发信成功')
+    }).catch(() => {
+      this.logger.error('发信失败')
+    });
   }
 
   async updateOne(id: string, DTO: PaymentDTO): Promise<Payment> {
